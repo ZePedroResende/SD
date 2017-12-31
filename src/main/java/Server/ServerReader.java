@@ -44,6 +44,10 @@ public class ServerReader implements Runnable{
         }
     }
 
+    public void terminate() {
+        this.running = false;
+    }
+
     private String parseResponse(String response) throws InvalidRequestException, InvalidAuthenticationException, PlayerAlredyExistsException {
         String[] info = response.split(" ", 2);
         switch (info[0].toUpperCase()) {
@@ -56,6 +60,9 @@ public class ServerReader implements Runnable{
             case "QUEUE":
                 requiresAuthentication(true);
                 return this.queueUp();
+            case "LOGOUT":
+                requiresAuthentication(true);
+                return this.logout();
             default: return "OOPS";
         }
     }
@@ -88,5 +95,11 @@ public class ServerReader implements Runnable{
     private String queueUp() {
         engine.intoQueue(player);
         return "QUEUED-UP";
+    }
+
+    private String logout() {
+        player.logout();
+        this.terminate();
+        return "SEEYA";
     }
 }

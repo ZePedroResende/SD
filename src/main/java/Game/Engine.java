@@ -52,6 +52,7 @@ public class Engine {
                 throw new InvalidAuthenticationException("Os dados inseridos estão incorretos");
             if (player.getAuthenticated())
                 throw new InvalidAuthenticationException("Já existe outro utilizador autenticado");
+            player.login();
             player.resetHub();
         } finally {
             playerLock.unlock();
