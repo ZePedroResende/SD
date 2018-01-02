@@ -117,7 +117,7 @@ public class Engine {
         Set<String> below = queue.get(rank-1);
         if (above != null) size+= above.size();
         if (below != null) size+=below.size();
-        return size >= 2;
+        return size >= 10;
     }
 
     private Set<String> getAParty(Integer rank) {
@@ -134,7 +134,7 @@ public class Engine {
     private void getPlayers(Set<String> res, Set<String> rank) {
         if (rank != null) {
             Iterator<String> it = rank.iterator();
-            while (res.size() < 2 && it.hasNext()) {
+            while (res.size() < 10 && it.hasNext()) {
                 res.add(it.next());
             }
             rank.removeAll(res);
