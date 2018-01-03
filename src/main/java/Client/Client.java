@@ -17,15 +17,12 @@ public class Client {
             BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
             Menu menu = new Menu();
             Stub stub = new Stub(menu,bw);
-            ClientWriter cw = new ClientWriter(bw);
             ClientReader cr = new ClientReader(br, menu);
 
             Thread reader = new Thread(cr);
-            Thread writer = new Thread(cw);
             Thread stubs = new Thread(stub);
 
             reader.start();
-            writer.start();
             stubs.start();
         }
         catch(IOException e){
