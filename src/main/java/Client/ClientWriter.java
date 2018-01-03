@@ -6,12 +6,10 @@ import java.net.Socket;
 
 public class ClientWriter implements Runnable {
 
-    private Socket cliSocket;
     private BufferedWriter clientOut;
     private Boolean running;
 
-    public ClientWriter(Socket cliSocket, BufferedWriter clientOut) {
-        this.cliSocket = cliSocket;
+    public ClientWriter(BufferedWriter clientOut) {
         this.clientOut = clientOut;
         this.running = true;
     }
@@ -20,7 +18,7 @@ public class ClientWriter implements Runnable {
     @Override
     public void run() {
         while (running) {
-            String response = this.receiveString();
+            String response = this.receive();
             try {
                 clientOut.write(response);
             } catch (IOException e) {
@@ -29,7 +27,7 @@ public class ClientWriter implements Runnable {
         }
     }
 
-    private String receiveString() {
+    private String receive() {
         return "";
     }
 
