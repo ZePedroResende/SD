@@ -51,6 +51,15 @@ public class ClientReader implements Runnable{
                 menu.setState(1);
                 menu.show();
                 break;
+            case("DODGE"):
+                if (menu.getState()==3) {
+                    System.out.println("TIME OUT - Expelled from match");
+                    menu.setState(1);
+                    menu.show();
+                } else if (menu.getState()==2) {
+                    System.out.println("[Match restarted because some players didn't choose their champions]");
+                }
+                break;
             case("DOUBLE"):
                 System.out.println("This user is already authenticated elsewhere");
                 menu.show();
