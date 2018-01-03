@@ -94,7 +94,7 @@ public class Menu {
                 break;
             case 5:
                 System.out.println("*************** GAME OVER *************\n" +
-                        "  WINNER - "+ team.toUpperCase() + "TEAM!\n\n" +
+                        "  WINNER - "+ team.toUpperCase() + " TEAM!\n\n" +
                         "  0 - Exit\n" +
                         "**************************************\n");
                 break;
