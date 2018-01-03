@@ -56,8 +56,6 @@ public class ClientReader implements Runnable{
                     System.out.println("TIME OUT - Expelled from match");
                     menu.setState(1);
                     menu.show();
-                } else if (menu.getState()==2) {
-                    System.out.println("[Match restarted because some players didn't choose their champions]");
                 }
                 break;
             case("DOUBLE"):
@@ -68,6 +66,9 @@ public class ClientReader implements Runnable{
                 stats(info[1]);
                 break;
             case("QUEUED-UP"):
+                if (menu.getState()==3) {
+                    System.out.println("[Match restarted because some players didn't choose their champions]");
+                }
                 menu.setState(2);
                 menu.show();
                 break;
